@@ -1,7 +1,7 @@
 (ns compile-time.core)
 
 
-(defmacro run-body
+(defmacro run
   "Run forms in compile time, return result of last forms"
   [& forms]
   (run! eval (butlast forms))

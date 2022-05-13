@@ -1,4 +1,4 @@
-(defproject org.clojars.ilevd/compile-time "1.0.0"
+(defproject org.clojars.ilevd/compile-time "1.0.1"
   :description "Run Clojure code in compile time"
   :url "https://github.com/ilevd/compile-time"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"

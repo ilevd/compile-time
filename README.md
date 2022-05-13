@@ -43,11 +43,11 @@ So you need to require the lib and declare this data:
 
 ;; (defn current-commit ... )
 
-;; declare data with run-fn
+;; declare data with `run-fn`
 (def commit-info (ct/run-fn current-commit))
 
-;; or you can use run-body
-(def commit-info-2 (ct/run-body (current-commit)))
+;; or you can use `run`
+(def commit-info-2 (ct/run (current-commit)))
 
 ```
 
