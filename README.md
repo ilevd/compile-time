@@ -29,7 +29,7 @@ Suppose you have function that reads last commit info:
 
 ```
 
-And you want this data to be available when you run your app with uberjar.
+And you want run this function when jar is builting, so `.git` is available, and set this data to a variable, to be able to use it later in runtime.
 
 So you need to require the lib and declare this data:
 
