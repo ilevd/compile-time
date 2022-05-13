@@ -1,11 +1,11 @@
 # compile-time
 
-A Clojure library designed to run your Clojure code in compile time, when the app starts.
+A Clojure library designed to run your Clojure code in compile time.
 
 ## Rationale
 
-Sometimes you need to run some code in compile time, for example load some data, or read last GIT commit info.
-Exactly for this puprose this library was designed.
+Sometimes you need to run some code in compile time, for example to load some data, or read last GIT commit info.
+Exactly for this purpose this library was designed.
 
 ## Installation 
 
