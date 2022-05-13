@@ -7,6 +7,9 @@ A Clojure library designed to run your Clojure code in compile time, when the ap
 Sometimes you need to run some code in compile time, for example load some data, or read last GIT commit info.
 Exactly for this puprose this library was designed.
 
+## Installation 
+
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.ilevd/compile-time.svg)](https://clojars.org/org.clojars.ilevd/compile-time)
 
 ## Usage
 
