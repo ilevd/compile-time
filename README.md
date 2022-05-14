@@ -1,6 +1,6 @@
 # compile-time
 
-A Clojure library designed to run your Clojure code in compile time.
+A Clojure library designed to run your Clojure code at compile time.
 
 ## Rationale
 
@@ -13,12 +13,42 @@ Exactly for this purpose this library was designed.
 
 ## Usage
 
-Suppose you have function that reads last commit info:
+Require lib and use `run` or `run-fn` macros:
 
 ```Clojure
 (ns my-app.core
-  (:require [clj-jgit.porcelain :as git]))
+  (:require [compile-time.core :ad ct]))
 
+(def data (ct/run
+            (println "Run in compile time")
+            (+ 10 20)))
+
+;; so it will expand to (def data 30) when the app will run
+```
+
+### API
+
+#### run
+
+`(compile-time.core/run [& forms])`
+
+Pass body to `run` macros. All forms will be evaluated and the result of evaluating the last form will be returned.
+
+
+#### run-fn
+
+`(compile-time.core/run-fn [f & args])`
+
+If you need to evaluate just one function, you may use `run-fn`.
+
+### Real example
+
+Suppose you need to get last GIT commit info from your project repository at compile time:
+
+```Clojure
+(ns my-app.core
+  (:require [clj-jgit.porcelain :as git]
+            [compile-time.core :ad ct]))
 
 (defn current-commit
   "Get GIT commit info"
@@ -30,27 +60,11 @@ Suppose you have function that reads last commit info:
               :author (-> commit-data :committer :name)
               :msg    (:msg commit-data)}}))
 
-```
+(def commit-info (ct/run (current-commit)))
 
-And you want run this function when jar is builting, so `.git` is available, and set this data to a variable, to be able to use it later in runtime.
-
-So you need to require the lib and declare this data:
-
-```Clojure
-(ns my-app.core
-  (:require [clj-jgit.porcelain :as git]
-            [compile-time.core :ad ct]))
-
-;; (defn current-commit ... )
-
-;; declare data with `run-fn`
+:; or with run-fn
 (def commit-info (ct/run-fn current-commit))
-
-;; or you can use `run`
-(def commit-info-2 (ct/run (current-commit)))
-
 ```
-
 
 
 ## License
